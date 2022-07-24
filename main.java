@@ -1,76 +1,53 @@
 package driver;
-
 import java.util.Scanner;
-
 public class main {
 
 	public static void main(String[] args) {
-		
-		// TODO Auto-generated method stub
-        int num;
-        int amount;
-        
-		Scanner sc = new Scanner(System.in);
-		
-
-		System.out.println("Enter the size of currency denominations ");
-		num = sc.nextInt();
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter the size of transaction array");
+		int n = s.nextInt();
+		int Tar;
+		int Value;
+		int i;
 		
 		
-		int[] den = new int[num];
-				
+		int[] Trans = new int[n];
 		
-		System.out.println("Enter the currency denominations value ");
-		
-		for(int i = 0; i<num; i++)
+		System.out.println("Enter the values of array");
+		for(i=0;i<n;i++)
 		{
-		den[i]= sc.nextInt();
-		
+			
+			Trans[i]= s.nextInt();
+			
 		}
 		
-		int temp=0;
-		 for (int j = 0; j < num; j++) 
-	        {
-	            for (int k = j + 1; k < num; k++) 
-	            {
-	                if (den[j] < den[k]) 
-	                {
-	                    temp = den[j];
-	                    den[j] = den[k];
-	                    den[k] = temp;
-	                }
-	            }
-	        }
-		 
-		
-		
-		System.out.println("Enter the amount you want to pay");
-		amount = sc.nextInt();
-		
-		System.out.println("Your payment approach in order to give min no of notes will be");
-		
-		for( int m=0;m<num;m++)
+		System.out.println("Enter the Total no of targets to be achieved");
+		Tar = s.nextInt();
+		for(int j=0;j<Tar;j++)
+		{
+			 int sum=0;
+			 int match=0;
+			System.out.println("Enter the value of Target");
+			Value=s.nextInt();
+			for(i=0;i<n;i++)
 			{
-			  int note=0, rem;
-			  
-			if(amount>=den[m])
-			{
-				note=amount/den[m];
-				rem=amount%den[m];
-				amount=rem;
-				System.out.println(den[m]+" "+note);
-			}
-				
-			}
+				sum= sum+Trans[i];
+				if(sum>=Value)
+				{
+					match=1;
+					System.out.println("Target achieved after "+(i+1)+" transaction");
+					break;
+				}
+			}	
 		
+			if(match==0)
+				System.out.println("Target not achieved");
 			
-	
 		
-		
-		
-		
-		
-		
+		// TODO Auto-generated method stub
+
 	}
 
+	}
+	
 }
